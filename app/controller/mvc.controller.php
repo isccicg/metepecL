@@ -14,37 +14,6 @@ class mvc_controller {
 		$this->view_page($pagina);
    } 
 
-   function altaCitatorio()
-   {
-		$pagina=$this->load_template('');	/*titulo de la pagina */			
-		$html = $this->load_page('app/views/default/modules/userOfi/m.altaCitatorio.php');
-		$pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$html , $pagina);
-		
-		$this->view_page($pagina);
-   }
-
-   function altaFormato()
-   {
-		$pagina=$this->load_template('');	/*titulo de la pagina */			
-		$html = $this->load_page('app/views/default/modules/userOfi/m.altaFormato.php');
-		$pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$html , $pagina);
-
-		$this->view_page($pagina);
-   }
-
- function indexAdm()
-   {
-		$pagina=$this->load_template('');	/*titulo de la pagina */	
-		
-		$html = $this->load_page('app/views/default/modules/m.principal.php');
-		$pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$html , $pagina);
-		$menu = $this->load_page('app/views/default/sections/s.menuAdm.php');
-		$pagina = $this->replace_menuAdm('/\#MENUADM\#/ms' ,$menu , $pagina); 
-		$this->view_page($pagina);
-   }
-
-
-
 
 
   
@@ -59,12 +28,12 @@ class mvc_controller {
 		$pagina = $this->load_page('app/views/default/page.php');
 		$head = $this->load_page('app/views/default/sections/s.head.php');		
 		$foot = $this->load_page('app/views/default/sections/s.foot.php');
-
-			$menu = $this->load_page('app/views/default/sections/s.menuUserO.php');
-		$pagina = $this->replace_menuAdm('/\#MENU\#/ms' ,$menu , $pagina); 
-
+		$footer = $this->load_page('app/views/default/sections/s.footer.php');
+		$menu = $this->load_page('app/views/default/sections/s.menu.php');
+		$pagina = $this->replace_menuAdm('/\#MENU\#/ms' ,$menu , $pagina);
 		$pagina = $this->replace_content('/\#HEAD\#/ms' ,$head , $pagina);
 		$pagina = $this->replace_content('/\#FOOT\#/ms',$foot , $pagina);
+		$pagina = $this->replace_content('/\#FOOTER\#/ms',$footer , $pagina);
 		$pagina = $this->replace_content('/\#TITLE\#/ms' ,$title , $pagina);
 	
 		return $pagina;

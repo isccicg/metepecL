@@ -2,7 +2,7 @@
 
 /*require 'app/model/universitario.class.php';*/
 
-class mvc_controller {  
+class mvc_controllerUserCam {  
 	
 
   function index()
@@ -12,60 +12,51 @@ class mvc_controller {
 		$pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$html , $pagina);
 	
 		$this->view_page($pagina);
-   } 
+   }  
 
-  
-
-   function altaFormato()
+   /*Funciones de Usuario de Campo*/
+   function indexUserCam()
+   {
+		$pagina=$this->load_template('');	/*titulo de la pagina */	
+		
+		$html = $this->load_page('app/views/default/modules/userCam/m.indexUserCam.php');
+		$pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$html , $pagina);	
+		$this->view_page($pagina);
+   }
+   function crearGira()
    {
 		$pagina=$this->load_template('');	/*titulo de la pagina */			
-		$html = $this->load_page('app/views/default/modules/userOfi/m.altaFormato.php');
-		$pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$html , $pagina);
-
+		$html = $this->load_page('app/views/default/modules/userCam/m.crearGira.php');
+		$pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$html , $pagina);		
 		$this->view_page($pagina);
    }
-
- function indexAdm()
-   {
-		$pagina=$this->load_template('');	/*titulo de la pagina */	
-		
-		$html = $this->load_page('app/views/default/modules/m.principal.php');
-		$pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$html , $pagina);
-		$menu = $this->load_page('app/views/default/sections/s.menuAdm.php');
-		$pagina = $this->replace_menuAdm('/\#MENUADM\#/ms' ,$menu , $pagina); 
-		$this->view_page($pagina);
-   }
- function indexUserC()
-   {
-		$pagina=$this->load_template('');	/*titulo de la pagina */	
-		
-		$html = $this->load_page('app/views/default/modules/m.principal.php');
-		$pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$html , $pagina);
-		$menu = $this->load_page('app/views/default/sections/s.menuUserC.php');
-		$pagina = $this->replace_menuAdm('/\#MENUADM\#/ms' ,$menu , $pagina); 
-		$this->view_page($pagina);
-   }
-
-
-   /*Funciones de Usuario de Oficina*/
-   function indexUserO()
-   {
-		$pagina=$this->load_template('');	/*titulo de la pagina */	
-		
-		$html = $this->load_page('app/views/default/modules/m.principal.php');
-		$pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$html , $pagina);
-		$menu = $this->load_page('app/views/default/sections/s.menuUserO.php');
-		$pagina = $this->replace_menuAdm('/\#MENUADM\#/ms' ,$menu , $pagina); 
-		$this->view_page($pagina);
-   }
-    function altaCitatorio()
+    function crearPregira()
    {
 		$pagina=$this->load_template('');	/*titulo de la pagina */			
-		$html = $this->load_page('app/views/default/modules/userOfi/m.altaCitatorio.php');
-		$pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$html , $pagina);
-		$menu = $this->load_page('app/views/default/sections/s.menuUserO.php');
-		$pagina = $this->replace_menuAdm('/\#MENU\#/ms' ,$menu , $pagina); 
-		
+		$html = $this->load_page('app/views/default/modules/userCam/m.crearPregira.php');
+		$pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$html , $pagina);		
+		$this->view_page($pagina);
+   }  
+   
+    function historialEvento()
+   {
+		$pagina=$this->load_template('');	/*titulo de la pagina */			
+		$html = $this->load_page('app/views/default/modules/userCam/m.historialEvento.php');
+		$pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$html , $pagina);		
+		$this->view_page($pagina);
+   }
+   function historialGira()
+   {
+		$pagina=$this->load_template('');	/*titulo de la pagina */			
+		$html = $this->load_page('app/views/default/modules/userCam/m.historialGira.php');
+		$pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$html , $pagina);		
+		$this->view_page($pagina);
+   }
+   function historialPregira()
+   {
+		$pagina=$this->load_template('');	/*titulo de la pagina */			
+		$html = $this->load_page('app/views/default/modules/userCam/m.historialPregira.php');
+		$pagina = $this->replace_content('/\#CONTENIDO\#/ms' ,$html , $pagina);		
 		$this->view_page($pagina);
    }
 
@@ -84,10 +75,12 @@ class mvc_controller {
 		$pagina = $this->load_page('app/views/default/page.php');
 		$head = $this->load_page('app/views/default/sections/s.head.php');		
 		$foot = $this->load_page('app/views/default/sections/s.foot.php');
-		/*$menu = $this->load_page('app/views/default/sections/s.menuUserO.php');
-		$pagina = $this->replace_menuAdm('/\#MENU\#/ms' ,$menu , $pagina); */
+		$footer = $this->load_page('app/views/default/sections/s.footer.php');
+		$menu = $this->load_page('app/views/default/sections/s.menuUserC.php');
+		$pagina = $this->replace_menuAdm('/\#MENU\#/ms' ,$menu , $pagina);
 		$pagina = $this->replace_content('/\#HEAD\#/ms' ,$head , $pagina);
 		$pagina = $this->replace_content('/\#FOOT\#/ms',$foot , $pagina);
+		$pagina = $this->replace_content('/\#FOOTER\#/ms',$footer , $pagina);
 		$pagina = $this->replace_content('/\#TITLE\#/ms' ,$title , $pagina);
 	
 		return $pagina;
